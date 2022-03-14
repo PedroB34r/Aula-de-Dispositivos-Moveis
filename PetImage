@@ -1,0 +1,129 @@
+
+import * as React from 'react';
+import {StyleSheet, Text, View,Button,ImageBackground,Alert,TextInput} from 'react-native';
+import Petimage from './assets/pets.png'
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+
+
+
+/**const win = Dimensions.get("window"); usado para ajustar a imagem */
+/**constante que puxa as informaçoes do formulario, props é a variavel */
+const PetView = (props) => {
+  return( 
+    <View style={{
+      flex:1,
+      justifyContent:"center",
+      padding: 10
+    }}>
+      <Text style={{
+        fontWeight: "bold",
+        fontSize: 18
+      }}>{props.nome}</Text>
+     
+     <Text style={{
+       color:"yellow",
+       fontSize:16
+     }}>{props.raça} - {props.peso} kilos - {props.nascimento}</Text>
+      
+    </View>
+  );
+}
+
+
+
+/*  a const pode ser substituida por Function e seu nome tambem pode ser alterado*/
+const drawer = createDrawerNavigator();
+
+/*import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+const Tab = createBottomTabNavigator(); cria pequenos botoes*/
+
+
+/** ao alterar o nomo da const pu function deve se alterar os nomes das Screen */
+    const Atv1 = () => {
+return(
+  <NavigationContainer>
+        <drawer.Navigator>
+          <drawer.Screen name="Cadastrar" component={Cadastra}/>
+          <drawer.Screen name="Listados" component={Listar}/>
+        </drawer.Navigator>
+      </NavigationContainer>
+);
+    }
+
+
+<ImageBackground style={{
+    flex:3,
+    justifyContent: "center",
+    alignItems: "center"
+}}
+source={Petimage}>
+    <Text style ={{
+        fontSize:48,
+        color:"orange",
+        textShadowColor:"black",
+        textShadowRadius:15,
+        backgroundColor:"black",
+    }}>Pets</Text>
+</ImageBackground>
+
+
+
+
+    const Cadastra = () =>{
+      return(
+        <View style={{
+            flex:2,
+            backgroundColor:"blue"
+          }}>
+            <View style={{
+           flex:2,
+         }}>
+          <Text>Nome:</Text>
+          <TextInput/>
+          <Text>Raça:</Text>
+          <TextInput/>
+          <Text>Peso:</Text>
+          <TextInput/>
+          <Text>Nascimento:</Text>
+          <TextInput/>
+         </View>
+           <Button 
+           title='Cadastrar'
+           color="#0f1bc5"
+           onPress={()=> Alert.alert('O seu cadastro foi efetuado')}/>
+           </View>
+      );
+    }
+
+     
+    const Listar = () =>{
+      return(
+        <View style={{
+            flex:2,
+            backgroundColor:"blue"
+          }}>
+            <View style={{
+           flex:2,
+         }}>
+           <PetView nome="Kelly" raça="vira-lata"
+                    peso="11,04" nascimento="25-01-2002"/>
+          
+           <PetView nome="Prince" raça="vira-lata"
+                    peso="10,50" nascimento="25-04-2005"/>
+          
+           <PetView nome="Peste" raça="vira-lata"
+                    peso="10,00" nascimento="09-09-2009"/>
+           
+           <PetView nome="Luna" raça="Ciames"
+                    peso="15,00" nascimento="28-08-2017"/>
+         </View>
+         </View>
+      );
+    }
+
+export default Atv1;
+
+/*chaninho*/
+App.js
+Exibindo App.js.
